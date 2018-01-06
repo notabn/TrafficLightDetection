@@ -26,6 +26,11 @@ sudo chwon [user] /usr/local/bin/protoc
 sudo chwon -R [user] /usr/local/include/google
 
 
+export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+
+# From tensorflow/models/research/
+protoc object_detection/protos/*.proto --python_out=.
+
 train
 .----------------
 python object_detection/train.py --pipeline_config_path=config/ssd_inception_v2_coco.config --train_dir=data/sim_training_data/sim_data_capture
